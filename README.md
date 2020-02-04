@@ -27,7 +27,10 @@ Note: the 4th ECS cluster is `Fargatecount`'s own cluster.
 
 ## What does Fargatecount install ?
 
-`Fargatecount` creates a VPC (optionally) and an ECS cluster (without EC2 instances) where it schedules a Fargate task to run every 10 minutes to gather the statistics and push them to CloudWatch (optionally). The Fargate task runs a script that that. Note that the tool by default does not put metrics into CloudWatch. It only prints these information on standard out whenever it runs (every 10 minutes). If you want to arm the script to put to CloudWatch you need to set the `armed=true` system variable. More on this in the `Getting Started` section. 
+`Fargatecount` creates a VPC (optionally) and an ECS cluster (without EC2 instances) where it schedules a Fargate task to run every 10 minutes to gather the statistics and push them to CloudWatch (optionally). The `fargatecount` task runs a script that parses all ECS and EKS clusters in the account and in the region and extract the number of fargate tasks and pods that run in those. Note that the tool by default does not put metrics into CloudWatch. It only prints these information on standard out whenever it runs (every 10 minutes). If you want to arm the script to put to CloudWatch you need to set the `armed=true` system variable. More on this in the `Getting Started` section. 
+
+This is a high level architecrtural representation of what the tool does:
+![number](./images/fargatecountarchitecture.png)
 
 ## Getting started
 
